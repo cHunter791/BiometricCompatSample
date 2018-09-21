@@ -7,10 +7,8 @@ import android.os.Handler
 import android.widget.Button
 import android.widget.Toast
 import androidx.biometrics.BiometricPrompt
-import java.util.concurrent.Executors
 import android.os.Looper
 import java.util.concurrent.Executor
-
 
 class LoginActivity : AppCompatActivity() {
 
