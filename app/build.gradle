@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.hunter.christopher.biometricstest"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    appcompat_version = '1.0.0-rc02'
+    biometric_version = '1.0.0-alpha01'
+    constraint_layout_version = '2.0.0-alpha2'
+
+    junit_version = '4.12'
+    testrunner_version = '1.1.0-alpha4'
+    espresso_version = '3.1.0-alpha4'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+
+    implementation "androidx.biometric:biometric:$biometric_version"
+
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+
+    testImplementation "junit:junit:$junit_version"
+
+    androidTestImplementation "androidx.test:runner:$testrunner_version"
+
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+}
