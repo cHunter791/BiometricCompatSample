@@ -1,6 +1,7 @@
 package com.hunter.christopher.biometricstest
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -20,7 +21,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun openBiometricPrompt() {
-        BiometricPrompt(this, UiThreadExecutor(), object : BiometricPrompt.AuthenticationCallback() {
+        val executor = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) mainExecutor else UiThreadExecutor()
+
+        BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                 super.onAuthenticationError(errorCode, errString)
                 Toast.makeText(this@LoginActivity, "Auth error: $errString", Toast.LENGTH_SHORT).show()
